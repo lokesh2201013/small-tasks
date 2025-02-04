@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   email-service:
-    image: us-central1-docker.pkg.dev/practice-445623/liaassign/email-service:latest
+    image: us-central1-docker.pkg.dev/{{secrets.PID}}/liaassign/email-service:latest
     ports:
       - "3000:3000"
     env_file:
