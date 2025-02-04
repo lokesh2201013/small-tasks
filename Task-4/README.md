@@ -241,3 +241,10 @@ Grafana Dashboard: Visualizations of the application's
 performance.
 
 Alert Notifications: Alerts triggered based on CPU usage, request duration, and error rates.
+
+
+![Logo](./images/Screenshot_4-2-2025_20494_localhost.jpeg)
+
+![Logo](./images/Screenshot_4-2-2025_201859_localhost.jpeg)
+
+![Logo](./images/Screenshot_4-2-2025_201837_localhost.jpeg)
