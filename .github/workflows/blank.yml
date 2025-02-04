@@ -1,9 +1,9 @@
 name: Build, Scan, Push, and Deploy Docker Image to GCP VM
 
-on:
-  push:
-    branches:
-      - main  
+#on:
+  #push:
+    #branches:
+       #- main  
 
 jobs:
   build_scan_push_deploy:
