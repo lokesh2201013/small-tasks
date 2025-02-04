@@ -55,6 +55,9 @@ jobs:
             --tunnel-through-iap \
             --zone=us-central1-c \
             --command "
+              pwd
+              ls -la
+              which docker-compose
               gcloud auth configure-docker us-central1-docker.pkg.dev
               docker-compose pull
               docker-compose down
