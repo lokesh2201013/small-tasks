@@ -1,0 +1,51 @@
+name: Build, Scan, Push, and Deploy Docker Image to GCP VM
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch (or any other branch you prefer)
+
+jobs:
+  build_scan_push_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Log in to Google Artifact Registry
+        run: |
+          gcloud auth configure-docker gcr.io
+          gcloud auth configure-docker us-central1-docker.pkg.dev  # Add your region if necessary
+
+      - name: Build Docker Image
+        run: |
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest .
+
+      - name: Scan Docker Image with Trivy
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest --no-progress --exit-code 1 --security-checks vuln --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest
+
+      - name: Push Docker Image to Google Artifact Registry
+        run: |
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest
+
+      - name: SSH to GCP VM and Deploy Docker Container
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.GCP_VM_IP }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            docker pull gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest
+            docker rm -f $(docker ps -q --filter ancestor=gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest)
+            docker run -d -p 80:3000 gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-repo-name/your-app-name:latest
