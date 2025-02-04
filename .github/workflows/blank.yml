@@ -39,7 +39,7 @@ jobs:
           # Run OWASP Dependency Check
           mkdir -p dependency-check
           docker run --rm -v $(pwd)/dependency-check:/report owasp/dependency-check \
-            --scan /github/workspace --format HTML --out /report || true
+            --scan /.github/workspace --format HTML --out /report || true
 
       - name: Push Docker Image to Google Artifact Registry
         run: |
