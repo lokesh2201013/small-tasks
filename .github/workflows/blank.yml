@@ -59,7 +59,7 @@ jobs:
               ls -la
               which docker-compose
               gcloud auth configure-docker us-central1-docker.pkg.dev
-              docker-compose pull
-              docker-compose down
-              docker-compose up -d
+              docker compose pull
+              docker compose down
+              docker compose up -d
             "
