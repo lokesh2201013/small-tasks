@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/liaassign/email-service:latest .
+          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/liaassign/email-service:latest ./Task1and2/
 
       - name: Security Scans (Trivy & OWASP Dependency Check)
         run: |
