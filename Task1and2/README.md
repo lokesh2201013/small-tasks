@@ -1,4 +1,6 @@
+# For this task images are in  images folder 
 # 1. Cloud Infrastructure & Deployment (GCP)
+
 Architecture Diagram
 Your setup consists of the following components:
 
