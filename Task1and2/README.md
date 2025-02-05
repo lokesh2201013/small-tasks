@@ -18,7 +18,7 @@ GitHub Actions CI/CD: Automates build, scan, push, and deployment.
 
 Here’s a simple architecture diagram:
 ```
- +----------------------------+
+                                 +----------------------------+
                                 |      Public Internet       |
                                 +------------+---------------+
                                              |
