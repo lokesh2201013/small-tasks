@@ -279,3 +279,7 @@ Final Deliverables
 ✅ CI/CD Pipeline YAML & Explanation
 
 ✅ Github Secrets Management Best Practices
+
+![Logo](./images/Screenshot 2025-02-05 041720.png)
+
+![LOGO](./images/Screenshot 2025-02-05 041720.png)
