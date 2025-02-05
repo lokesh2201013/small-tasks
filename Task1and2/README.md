@@ -280,6 +280,6 @@ Final Deliverables
 
 ✅ Github Secrets Management Best Practices
 
-![Logo](./images/Screenshot 2025-02-05 041720.png)
+![Logo](./Task1and2/images/Screenshot 2025-02-05 041720.png)
 
 ![LOGO](./images/Screenshot 2025-02-05 041720.png)
