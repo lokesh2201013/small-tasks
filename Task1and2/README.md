@@ -1,4 +1,5 @@
 # For this task images are in  images folder 
+# Task 1 and 2 have been combined for efficency and time management reasons
 # 1. Cloud Infrastructure & Deployment (GCP)
 
 Architecture Diagram
